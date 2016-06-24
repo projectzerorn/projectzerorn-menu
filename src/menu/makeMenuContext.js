@@ -118,12 +118,18 @@ module.exports = (React, ReactNative, { constants, model, styles }) => {
       // Only do this once on initial layout.
       this.onLayout = once(this.onLayout);
     },
+    // onLayout() {
+    //   const handle = ReactNative.findNodeHandle(this.refs.Container);
+    //   UIManager.measure(handle, (x, y, w, h, px, py) => {
+    //     this._ownMeasurements = {x, y, w, h, px, py};
+    //   });
+    // },
     onLayout() {
-      const handle = ReactNative.findNodeHandle(this.refs.Container);
-      UIManager.measure(handle, (x, y, w, h, px, py) => {
-        this._ownMeasurements = {x, y, w, h, px, py};
-      });
-    },
+  const handle = React.findNodeHandle(this.refs.Container);
+  UIManager.measure(handle, (x, y, w, h, px, py) => {
+    this._ownMeasurements = {x, y, w, h, px:0, py};
+  });
+  },
     _registerMenu(name, hooks) {
       if (this._menus[name]) {
         console.warn(`Menu ${name} has already been registered in this context. Please provide a different name.`);
