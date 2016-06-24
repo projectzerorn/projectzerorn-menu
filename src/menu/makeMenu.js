@@ -87,7 +87,7 @@ module.exports = (React, ReactNative, { constants, model, styles }) => {
       this.context.menuController.registerOptionsElement(this._name, options);
 
       return (
-         <View style={this.props.style} ref={this._register} onLayout={this.onLayout}>
+          <View style={this.props.style} ref={this._register} collapsable={false}>
           { rest }
         </View>
       );
